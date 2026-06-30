@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Ocultar flechas de control nativas (spin buttons) en inputs tipo number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
