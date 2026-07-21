@@ -11,9 +11,9 @@ function RegisterForm({ onCancel }) {
   const [error, setError] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
 
-  const handleRegister = (e) => {
+const handleRegister = async (e) => {
     e.preventDefault();
-    const result = register({ name, email, dni, password });
+   const result = await register({ name, email, dni, password });
 
     if (result.success) {
       setError("");
