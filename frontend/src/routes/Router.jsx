@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import Login from "../pages/Login/Login";
 import DashboardCliente from "../pages/DashboardCliente/DashboardCliente";
 import DashboardAdmin from "../pages/DashboardAdmin/DashboardAdmin";
@@ -6,6 +7,8 @@ import Inversiones from "../pages/Inversiones/Inversiones";
 import ComprarDolar from "../pages/ComprarDolar/ComprarDolar";
 import TarjetasCliente from "../pages/TarjetasCliente/TarjetasCliente";
 import Transferir from "../pages/Transferir/Transferir";
+
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -18,26 +21,50 @@ export const router = createBrowserRouter([
   },
   {
     path: "/cliente",
-    element: <DashboardCliente />,
+    element: (
+      <ProtectedRoute allowedRole="cliente">
+        <DashboardCliente />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin",
-    element: <DashboardAdmin />,
+    element: (
+      <ProtectedRoute allowedRole="admin">
+        <DashboardAdmin />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/inversiones",
-    element: <Inversiones />,
+    element: (
+      <ProtectedRoute allowedRole="cliente">
+        <Inversiones />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/comprar-dolar",
-    element: <ComprarDolar />,
+    element: (
+      <ProtectedRoute allowedRole="cliente">
+        <ComprarDolar />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/tarjetas",
-    element: <TarjetasCliente />,
+    element: (
+      <ProtectedRoute allowedRole="cliente">
+        <TarjetasCliente />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/transferir",
-    element: <Transferir />,
-  }
+    element: (
+      <ProtectedRoute allowedRole="cliente">
+        <Transferir />
+      </ProtectedRoute>
+    ),
+  },
 ]);

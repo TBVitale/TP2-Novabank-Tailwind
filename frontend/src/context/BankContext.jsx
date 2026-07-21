@@ -9,7 +9,10 @@ const API_URL = "http://localhost:8888/api/auth";
 const normalizeUser = (usuario) => ({
   ...usuario,
   name: usuario.nombre ?? usuario.name,
-  role: usuario.rol ?? usuario.role,
+  role:
+    usuario.rol === "client"
+      ? "cliente"
+      : usuario.rol ?? usuario.role,
   balance: Number(usuario.saldo ?? usuario.balance ?? 0),
   status: usuario.estado ?? usuario.status,
 });
